@@ -5,37 +5,45 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Coding Quiz</title>
+  <link rel="stylesheet" href="./assets/css/reset.css" />
   <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 
 <body>
-  <a href = "highScores.html">View Highscores</a>
+  <header>
+    <a href="highScores.html">View Highscores</a>
 
-  <div class = "intro">
+    <div class="timer">
+      <h2 id="countdown"></h2>
+    </div>
+  </header>
+
+  <div class="intro">
     <h1>Coding Quiz Challenge</h1>
-    <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+    <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers
+      will penalize your score/time by ten seconds!</p>
     <button class="start">Start Quiz</button>
-  </div>
-
-  <div class="timer">
-    <h2 id="countdown"></h2>
   </div>
 
   <div id="questions"></div>
 
-  <div class = "done">
+  <div class="done">
     <div>
       <h1>All Done!</h1>
     </div>
     <!--Add with JS Your final score here-->
-    <p>Enter initials:</p>
-    <input type = "text" class = "input">
-    <button type = "submit" class = "submit">Submit</button>
+    <div class="userInput">
+      <p>Enter initials:</p>
+      <input type="text" class="input">
+      <button type="submit" class="submit">Submit</button>
+    </div>
   </div>
 
-  <div>
-    <p id = "wrong">Wrong!</p>
-    <p id = "right">Correct!</p>
+  <div class="message">
+    <hr id="line">
+    <p id="wrong">Wrong!</p>
+    <p id="right">Correct!</p>
   </div>
 
   <script src="./assets/js/script.js"></script>

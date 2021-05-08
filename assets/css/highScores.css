@@ -1,0 +1,39 @@
+/* ALL */
+
+html {
+    font-size: 10px;
+}
+
+body {
+    margin: auto;
+    margin-top: 4rem;
+    width: 50%;
+    text-align: left;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 3rem;
+    padding: 1rem;
+    padding-left: 0;
+}
+
+/* RESULTS SECTION */
+
+.results p {
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding: 5px;
+    background-color: #e1d3ec;
+    border: 2 px solid rebeccapurple;
+}
+
+button {
+    font-size: 1.5rem;
+    color: white;
+    background-color: rebeccapurple;
+    border-radius: 7px;
+    margin: 1rem;
+    margin-left: 0;
+    padding: 0.5rem;
+  }

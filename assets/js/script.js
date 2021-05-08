@@ -1,5 +1,5 @@
 /****************************************************************
-* Program: Timed Quiz
+* Program: Code Quiz
 *
 * Author: Megan Steblay
 *
@@ -8,9 +8,7 @@
 * This program produces a timed quiz.
 ****************************************************************/
 
-// ------------------------------------------------------------
-// Define variables
-// ------------------------------------------------------------
+// DEFINE VARIABLES //
 
 const introContainer = document.querySelector(".intro")
 const doneContainer = document.querySelector(".done");
@@ -18,6 +16,7 @@ const startButton = document.querySelector(".start");
 const submitButton = document.querySelector(".submit");
 const input = document.querySelector(".input");
 
+let line = document.getElementById("line");
 let wrong = document.getElementById("wrong");
 let right = document.getElementById("right");
 
@@ -89,9 +88,12 @@ let myQuestions = [
   },
 ];
 
+// FUNCTIONS //
 
+// Function on Page Load
 function init() {
   doneContainer.style.display = "none";
+  line.style.display = 'none';
   wrong.style.display = "none";
   right.style.display = "none";
   let storedScores = JSON.parse(localStorage.getItem("highScore"));
@@ -103,6 +105,8 @@ function init() {
   startButton.addEventListener("click", callQuiz)
 };
 
+// Function on Start click
+
 function callQuiz() {
   introContainer.style.display = "none";
 
@@ -110,12 +114,11 @@ function callQuiz() {
   generateQuiz(myQuestions);
 };
 
-// ---------------------------------------
+
 // Function for producing countdown timer
-// ---------------------------------------
+
 function countdown() {
 
-  // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
   timeInterval = setInterval(function () {
     // As long as the `timeLeft` is greater than 1
     if (timeLeft > 0) {
@@ -132,15 +135,15 @@ function countdown() {
     }
   }, 1000);
 };
-// ---------------------------------------
+
 // Function that generates quiz HTML
-// ---------------------------------------
+
 function generateQuiz(questions) {
 
-  // Variable for div that will house the questions
+  // Variable for div that will hold the questions
   let theQuestions = document.querySelector("#questions")
 
-  // Array variables for holding the question and answer information
+  // Array variables for holding question and answer information
   let divOutput = [];
   let questionsOutput = [];
   let answerOutput = [];
@@ -156,29 +159,22 @@ function generateQuiz(questions) {
     questionsOutput[i] = document.createElement("h3")
     divOutput[i].appendChild(questionsOutput[i])
     questionsOutput[i].textContent = questions[i].question
-    // For each available answer to this question this generates HTML
-    // with for loop that iterates through object answers array
+    // For each available answer to this question this generates HTML with for loop that iterates through object answers array
     for (number in questions[i].answers) {
       answerOutput[i] = document.createElement("p")
       answerOutput[i].setAttribute("data-number", number)
-      // Define data attribute to flag correct answers
-      // if (number === questions[i].correctAnswer) {
-      //   answerOutput[i].setAttribute("data-correct", "true")
-      // }
-      // else {
-      //   answerOutput[i].setAttribute("data-correct", "false")
-      // }
+
       divOutput[i].appendChild(answerOutput[i])
-      answerOutput[i].textContent = number + " - " + questions[i].answers[number]
+      answerOutput[i].textContent = number + ". " + questions[i].answers[number]
       // Add click event listener for each answer
       answerOutput[i].addEventListener("click", clickPerformed)
     }
   }
+  line.style.display = "block";
 };
-// -------------------------------------------------------------------
-// Function for testing event listener and getting question attribute
-// Logs answer correctness to console.log
-// -------------------------------------------------------------------
+
+// Function to text for correct/incorrect answer
+
 function clickPerformed(event) {
   let eventElement = event.target
   let questionNumber = eventElement.getAttribute("data-number")
@@ -189,14 +185,16 @@ function clickPerformed(event) {
     right.style.display = "block";
   }
 
+  // Hide "Wrong"/"Correct" after one second
   setTimeout(function() {
     wrong.style.display = "none";
     right.style.display = "none";
   }, 1000);
 
+  
   if (currentQuestion === (myQuestions.length - 1)) {
     endQuiz();
-
+    
   } else {
     let currentDiv = document.querySelector("." + myQuestions[currentQuestion].div)
     let newDiv = document.querySelector("." + myQuestions[currentQuestion+1].div)
@@ -206,6 +204,7 @@ function clickPerformed(event) {
   }
 }
 
+// Function to show end of quiz
 function endQuiz() {
   
   clearInterval(timeInterval);
@@ -215,9 +214,11 @@ function endQuiz() {
 
   timerEl.textContent = "Time: " + timeEnd;
 
+  //Hide quiz section
   document.getElementById("questions").style.display = "none";
+  line.style.display = "none";
   
-
+  //Show 'All Done' element
   doneContainer.style.display = "block";
 
   score = document.createElement("p")
@@ -227,6 +228,7 @@ function endQuiz() {
   submitButton.addEventListener("click", submit);
 }
 
+// On submit, go to 'Highscores' page
 function submit() {
 
   finalScore.push([input.value.toUpperCase(), timeEnd]);
@@ -236,11 +238,13 @@ function submit() {
   input.value = ""
 
   window.location.href = "highScores.html";
+  
 }
 
-// ---------------------------------------------------------
-// Execute functions
-// ---------------------------------------------------------
+
+
+// EXECUTE FUNCTIONS
+
 init();
 
 
