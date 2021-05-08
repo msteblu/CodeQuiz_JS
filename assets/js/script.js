@@ -230,13 +230,16 @@ function endQuiz() {
 
 // On submit, go to 'Highscores' page
 function submit() {
-
+  if (input.value === "") {
+    input.value = "ANON"
+  }
+  
   finalScore.push([input.value.toUpperCase(), timeEnd]);
 
   localStorage.setItem("highScore", JSON.stringify(finalScore));
-
+  
   input.value = ""
-
+  
   window.location.href = "highScores.html";
   
 }
