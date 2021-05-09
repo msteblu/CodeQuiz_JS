@@ -37,3 +37,8 @@ button {
     margin-left: 0;
     padding: 0.5rem;
   }
+
+  button:hover {
+    box-shadow: inset 0px 0px 5px gray, 0 0 5px gray;
+    filter:opacity(90%);
+  }
