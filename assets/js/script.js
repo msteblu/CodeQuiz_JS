@@ -20,7 +20,7 @@ let line = document.getElementById("line");
 let wrong = document.getElementById("wrong");
 let right = document.getElementById("right");
 
-let finalScore= [];
+let finalScore = [];
 
 // Variables for timer function
 let timerEl = document.getElementById('countdown');
@@ -186,27 +186,27 @@ function clickPerformed(event) {
   }
 
   // Hide "Wrong"/"Correct" after one second
-  setTimeout(function() {
+  setTimeout(function () {
     wrong.style.display = "none";
     right.style.display = "none";
   }, 1000);
 
-  
+
   if (currentQuestion === (myQuestions.length - 1)) {
     endQuiz();
-    
+
   } else {
     let currentDiv = document.querySelector("." + myQuestions[currentQuestion].div)
-    let newDiv = document.querySelector("." + myQuestions[currentQuestion+1].div)
+    let newDiv = document.querySelector("." + myQuestions[currentQuestion + 1].div)
     currentDiv.style.display = "none"
     newDiv.style.display = "block"
-    currentQuestion ++
+    currentQuestion++
   }
 }
 
 // Function to show end of quiz
 function endQuiz() {
-  
+
   clearInterval(timeInterval);
 
   timeEnd = timeLeft;
@@ -217,7 +217,7 @@ function endQuiz() {
   //Hide quiz section
   document.getElementById("questions").style.display = "none";
   line.style.display = "none";
-  
+
   //Show 'All Done' element
   doneContainer.style.display = "block";
 
@@ -233,15 +233,15 @@ function submit() {
   if (input.value === "") {
     input.value = "ANON"
   }
-  
+
   finalScore.push([input.value.toUpperCase(), timeEnd]);
 
   localStorage.setItem("highScore", JSON.stringify(finalScore));
-  
+
   input.value = ""
-  
+
   window.location.href = "highScores.html";
-  
+
 }
 
 
