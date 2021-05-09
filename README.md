@@ -15,16 +15,20 @@ All of the components of the application are also available through a download a
 Navigate to either the deployed [GitHub site](https://msteblu.github.io/CodeQuiz_JS/) or open the index.html file in a browser. From there, users are able to interact by starting the timed quiz, answering the five questions, seeing if they answered correctly or incorrectly, and saving their final score(s).
 
 *Starting the quiz:*
-    <img src="assets/images/quiz.png" width="550px">
+
+<img src="assets/images/quiz.png" width="550px">
 
 *Answering questions:*
-    <img src="assets/images/answer.png" width="550px">
+
+<img src="assets/images/answer.png" width="550px">
 
 *Saving scores:*
-    <img src="assets/images/done.png" width="550px">
+
+<img src="assets/images/done.png" width="550px">
 
 *Highscores Page*
-    <img src="assets/images/highscores.png" width="550px">
+
+<img src="assets/images/highscores.png" width="550px">
 
 ## License 
 
